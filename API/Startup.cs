@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,7 @@ namespace API
         {
             services.AddDbContext<StoreContext>(x => x.UseMySql(
                 _configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddControllers();
         }
 
